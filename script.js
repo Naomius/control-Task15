@@ -1,6 +1,6 @@
 let cities = [];
 let specializations = [];
-let person = [];
+let persons = [];
 
 Promise.all(
     [
@@ -8,7 +8,6 @@ Promise.all(
         fetch('specializations.json'),
         fetch('person.json'),
     ]
-
 ).then(async ([citiesResponse, specializationsResponse, personResponse]) => {
     const citiesJson = await citiesResponse.json();
     const specializationsJson = await specializationsResponse.json();
@@ -18,113 +17,102 @@ Promise.all(
 }).then(response => {
     cities = response[0];
     specializations = response[1];
-    person = response[2];
+    persons = response[2];
 
-    getInfo.call();
 
+    homeTasks()
+    // task4();
+    // task5();
+    // task6();
+    // task7();
+    // task8()
 })
-        //Не додумал с call, так как не знаю, правильно ли я проводил поиск ниже(и как это в логику связать одну) ..=)
 
-// function getInfo () {
-//     let usersInfo = person.map(item => {
-//         let city = cities.find(function (cityName) {
-//             return cityName.id === item.personal.locationId;
-//         });
-//         if (city && city.name) {
-//             item.city = city.name;
-//         }
-//         delete item.personal.locationId
-//         return item;
-//     })
-//   let userFullName = person.map(item => {
-//       return {
-//           firstName: item.personal.firstName,
-//           lastName: item.personal.lastName,
-//           city: item.city
-//       }
-//   })
-//     console.log(this.firstName + ' ' + this.lastName)
+function getInfoList(people) {
+    people.forEach(person => getInfo.call(person));
+}
+
+
+function getInfo() {
+    const {firstName, lastName, locationId} = this.personal;
+
+    const city = cities.find(cityName => cityName.id === locationId).name;
+    console.log(`${firstName} ${lastName}, ${city}`);
+}
+
+    function homeTasks() {
+        // getInfo.call(persons[0])
+        // task3();
+        // task4()
+        task8()
+    }
 //
 //
-// }
-
-
-    //Пункт№3
-
-// function getInfo () {
+// //Пункт№3
+//
+//
+// function task3() {
 //     let designerUser = specializations.find(item => item.name.toLowerCase() === 'designer');
 //         if(designerUser) {
-//             let result = person.filter(item => {
+//             let result = persons.filter(item => {
 //                 return item.personal.specializationId === designerUser.id;
-//             })
+//             });
 //
-//             console.log(result)
+//             getInfoList(result, 'task3')
 //         }
-//
 // }
 
-     //Пункт№4
+//Пункт№4
 
-// function getInfo() {
+// function task4() {
 //
-//     //Ниже два варианта решения, первый я правда не довел до конца, а второй вроде рабочий. Но хотел узнать,
-//     // плане логики поиска, какой из вариантов правильнее будет? Или может есть еще проще)
+//     let frontendUser = specializations.find(item => item.name.toLowerCase() === 'frontend');
+//         if (frontendUser) {
+//             let reactUser = persons.filter(item => {
+//                 return item.personal.specializationId === frontendUser.id
+//             })
+//                 if (reactUser) {
+//                     let result = reactUser.find(user => {
+//                         return user.skills.findIndex(person => {
+//                             return person.name === 'React';
+//                         }) ;
+//                         return user > -1;
+//                     })
+//                     console.log(result);
+//                 }
+//         }
+// }
 //
-//              //Вариант №1
-//     // let frontendUser = specializations.find(item => item.name.toLowerCase() === 'frontend');
-//     //     if (frontendUser) {
-//     //         let reactUser = person.filter(item => {
-//     //             return item.personal.specializationId === frontendUser.id;
-//     //         })
-//     //            let result = reactUser.some(item => {
-//     //                return item.skills.name === 'React'
-//     //            })
-//     // console.log(result)
-//     //             }
+// //Пункт №5
 //
-//         //Вариант №2
-//     let result = person.find(item => {
-//         let index = item.skills.findIndex(skill => {
-//             return skill.name === 'React';
-//         })
-//         return index - 1;
+// function task5() {
+//     const currentDate = new Date()
+//     const eighteenYears = 568036800000;
+//
+//     persons.every(user => {
+//         const [day, month, year] = user.personal.birthday.split('.');
+//         const userDate = new Date(+year, +month, +day)
+//
+//         console.log(currentDate - userDate > eighteenYears);
 //     })
-//     console.log(result)
-// }
-
-        //Пункт №5
-        //Егор, тут не разобрался, как с датой поступить, не докрутил. Её по идее нужно колбэком вставить, но наверное
-        //до отработки метода every(он я так понимаю уже заключительными будет, когда будут сравниваемые возраста)
-
-// function getInfo() {
-//     let usersList = person.reduce((accum, item) => {
-//             accum.push(item.personal);
-//             return accum
-//         }, [])
-//     let usersAge = usersList.every(function call(callback) {
-//        return item.birthday >= '2006' || item.birthday <= '1900'
-//     })
-// console.log(usersAge)
 // }
 //
-// function getCurrentAge(date) {
-//     return ((new Date().getTime() - new Date(date)) / (24 * 3600 * 365.25 * 1000)) | 0;
-// }
-// console.log(getCurrentAge('1988-09-18'));
+//
+//
+// //Пункт №6
+//
 
-
-   //Пункт №6
-
-// function getInfo() {
-//     // let cityId =  cities.find(item => item.name.toLowerCase() === 'Москва');
-//     // let backendId =  specializations.find(item => item.name.toLowerCase() === 'backend');
-//     //     if (backendId) {
-//     //         let backendConnection = person.filter(item => {
-//     //             return item.personal.specializationId === backendId.id
-//     //         })
+// function task6() {
+//
+//     let cityId =  cities.find(item => item.name.toLowerCase() === 'Москва');
+//     let backendId =  specializations.find(item => item.name.toLowerCase() === 'backend');
+//         if (backendId) {
+//             let backendConnection = persons.filter(item => {
+//                 return item.personal.specializationId === backendId.id
+//             })
 //     // console.log(backendConnection)
-//     //     }
-//     let result = person.map(item => {
+//         }
+//     let result = persons.map(item => {
 //         let city = cities.find(cityName => {
 //             return cityName.id === item.personal.locationId;
 //         });
@@ -146,26 +134,95 @@ Promise.all(
 //         return item.specializationId === 'backend' && item.city === 'Москва'
 //
 //     })
+//
+//
 //     let sortValue = backendUser.sort((a,b) => {
-//         return a.request.value - b.request.value;
+//         return (a.request.name === 'Зарплата'.value) - (b.request.name === 'Зарплата'.value);
 //     })
 //     console.log(sortValue)
+//
 // }
 
 
-            //Пункт №7
+//Пункт №7
 
-function getInfo() {
-    let designerUsers = specializations.find(item => {
-        return item.name.toLowerCase() === 'designer';
+// function task7() {
+//
+//     let designedUsers = specializations.find(item => item.name.toLowerCase() === 'designer');
+//         if (designedUsers) {
+//             let designerID = persons.filter(item => {
+//                 if ( item.personal.specializationId === designedUsers.id) {
+//                 }
+//             })
+//             if (designerID)
+//             let allUsers = persons.filter(item => {
+//                  return item.skills.level >= 6
+//                 console.log(allUsers)
+//             })
+//         }
+// }
+
+//Пункт №8
+
+function task8() {
+
+                //figmaUser
+    let maxFigmaLevel = 0;
+    let figmaUsers = null;
+    let newFigmaArr = [];
+    persons.forEach(item => {
+        let commonName = item.skills.find(productFigma => {
+            return productFigma.name === 'Figma'
+        })
+        if (commonName && commonName.level) {
+            let figmaLevel = commonName.level;
+            if (!isNaN(figmaLevel) && figmaLevel > maxFigmaLevel) {
+                maxFigmaLevel = figmaLevel
+                figmaUsers = item
+                newFigmaArr = figmaUsers
+
+            }
+        }
     })
 
-    let specializationId = designerUsers.id;
-    let resDesigners = person.filter(item => {
-        return item.personal.specializationId === specializationId;
+            //angularUser
+
+    let maxAngularLevel = 0;
+    let angularUsers = null;
+    let newAngularArr = [];
+    persons.forEach(item => {
+        let commonName = item.skills.find(productAngular => {
+            return productAngular.name === 'Angular'
+        })
+        if (commonName && commonName.level) {
+            let angularLevel = commonName.level;
+            if (!isNaN(angularLevel) && angularLevel > maxAngularLevel) {
+                maxAngularLevel = angularLevel
+                angularUsers = item
+                newAngularArr = angularUsers
+            }
+        }
     })
-    let result = resDesigners.filter(item => {
-      return item.skills.value >= 6 && item.skills.value >= 6
+
+            //GoUser
+
+    let maxGoLevel = 0;
+    let goUsers = null;
+    let newGoArr = [];
+    persons.forEach(item => {
+        let commonName = item.skills.find(productAngular => {
+            return productAngular.name === 'Go'
+        })
+        if (commonName && commonName.level) {
+            let goLevel = commonName.level;
+            if (!isNaN(goLevel) && goLevel > maxGoLevel) {
+                maxGoLevel = goLevel
+                goUsers = item
+                newGoArr = goUsers
+            }
+        }
     })
-    console.log(result)
+    let resultArray = [].concat(newFigmaArr, newAngularArr, newGoArr);
+    getInfoList(resultArray, 'task3')
+    // console.log(resultArray)
 }
