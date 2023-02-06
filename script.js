@@ -21,30 +21,28 @@ Promise.all(
 
 
     homeTasks()
-    // task4();
-    // task5();
-    // task6();
-    // task7();
-    // task8()
 })
 
-function getInfoList(people) {
-    people.forEach(person => getInfo.call(person));
-}
-
-
-function getInfo() {
-    const {firstName, lastName, locationId} = this.personal;
-
-    const city = cities.find(cityName => cityName.id === locationId).name;
-    console.log(`${firstName} ${lastName}, ${city}`);
-}
+// function getInfoList(people) {
+//     people.forEach(person => getInfo.call(person));
+// }
+//
+//
+// function getInfo() {
+//     const {firstName, lastName, locationId} = this.personal;
+//
+//     const city = cities.find(cityName => cityName.id === locationId).name;
+//     console.log(`${firstName} ${lastName}, ${city}`);
+// }
 
     function homeTasks() {
         // getInfo.call(persons[0])
         // task3();
         // task4()
-        task8()
+        // task5();
+        // task6();
+        // task7();
+        // task8()
     }
 //
 //
@@ -78,7 +76,7 @@ function getInfo() {
 //                         }) ;
 //                         return user > -1;
 //                     })
-//                     console.log(result);
+//                     console.log(result)
 //                 }
 //         }
 // }
@@ -164,65 +162,65 @@ function getInfo() {
 
 //Пункт №8
 
-function task8() {
-
-                //figmaUser
-    let maxFigmaLevel = 0;
-    let figmaUsers = null;
-    let newFigmaArr = [];
-    persons.forEach(item => {
-        let commonName = item.skills.find(productFigma => {
-            return productFigma.name === 'Figma'
-        })
-        if (commonName && commonName.level) {
-            let figmaLevel = commonName.level;
-            if (!isNaN(figmaLevel) && figmaLevel > maxFigmaLevel) {
-                maxFigmaLevel = figmaLevel
-                figmaUsers = item
-                newFigmaArr = figmaUsers
-
-            }
-        }
-    })
-
-            //angularUser
-
-    let maxAngularLevel = 0;
-    let angularUsers = null;
-    let newAngularArr = [];
-    persons.forEach(item => {
-        let commonName = item.skills.find(productAngular => {
-            return productAngular.name === 'Angular'
-        })
-        if (commonName && commonName.level) {
-            let angularLevel = commonName.level;
-            if (!isNaN(angularLevel) && angularLevel > maxAngularLevel) {
-                maxAngularLevel = angularLevel
-                angularUsers = item
-                newAngularArr = angularUsers
-            }
-        }
-    })
-
-            //GoUser
-
-    let maxGoLevel = 0;
-    let goUsers = null;
-    let newGoArr = [];
-    persons.forEach(item => {
-        let commonName = item.skills.find(productAngular => {
-            return productAngular.name === 'Go'
-        })
-        if (commonName && commonName.level) {
-            let goLevel = commonName.level;
-            if (!isNaN(goLevel) && goLevel > maxGoLevel) {
-                maxGoLevel = goLevel
-                goUsers = item
-                newGoArr = goUsers
-            }
-        }
-    })
-    let resultArray = [].concat(newFigmaArr, newAngularArr, newGoArr);
-    getInfoList(resultArray, 'task3')
-    // console.log(resultArray)
-}
+// function task8() {
+//
+//                 //figmaUser
+//     let maxFigmaLevel = 0;
+//     let figmaUsers = null;
+//     let newFigmaArr = [];
+//     persons.forEach(item => {
+//         let commonName = item.skills.find(productFigma => {
+//             return productFigma.name === 'Figma'
+//         })
+//         if (commonName && commonName.level) {
+//             let figmaLevel = commonName.level;
+//             if (!isNaN(figmaLevel) && figmaLevel > maxFigmaLevel) {
+//                 maxFigmaLevel = figmaLevel
+//                 figmaUsers = item
+//                 newFigmaArr = figmaUsers
+//
+//             }
+//         }
+//     })
+//
+//             //angularUser
+//
+//     let maxAngularLevel = 0;
+//     let angularUsers = null;
+//     let newAngularArr = [];
+//     persons.forEach(item => {
+//         let commonName = item.skills.find(productAngular => {
+//             return productAngular.name === 'Angular'
+//         })
+//         if (commonName && commonName.level) {
+//             let angularLevel = commonName.level;
+//             if (!isNaN(angularLevel) && angularLevel > maxAngularLevel) {
+//                 maxAngularLevel = angularLevel
+//                 angularUsers = item
+//                 newAngularArr = angularUsers
+//             }
+//         }
+//     })
+//
+//             //GoUser
+//
+//     let maxGoLevel = 0;
+//     let goUsers = null;
+//     let newGoArr = [];
+//     persons.forEach(item => {
+//         let commonName = item.skills.find(productAngular => {
+//             return productAngular.name === 'Go'
+//         })
+//         if (commonName && commonName.level) {
+//             let goLevel = commonName.level;
+//             if (!isNaN(goLevel) && goLevel > maxGoLevel) {
+//                 maxGoLevel = goLevel
+//                 goUsers = item
+//                 newGoArr = goUsers
+//             }
+//         }
+//     })
+//     let resultArray = [].concat(newFigmaArr, newAngularArr, newGoArr);
+//     getInfoList(resultArray, 'task8')
+//
+// }
